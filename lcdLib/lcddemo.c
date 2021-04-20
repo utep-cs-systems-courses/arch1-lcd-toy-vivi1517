@@ -16,8 +16,8 @@ main()
 
   clearScreen(COLOR_BLUE);
 
-  drawString5x7(20,20, "hello", COLOR_GREEN, COLOR_RED);
+  //  drawString5x7(20,20, "hello", COLOR_GREEN, COLOR_RED);
 
-  fillRectangle(30,30, 60, 60, COLOR_ORANGE);
-  
+  // fillRectangle(30,30, 60, 60, COLOR_ORANGE);
+  drawArrow(20, 20, COLOR_ORANGE);
 }

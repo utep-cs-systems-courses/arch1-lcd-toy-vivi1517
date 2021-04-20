@@ -21,12 +21,19 @@ void drawPixel(u_char col, u_char row, u_int colorBGR);
  *  \param height height of rectangle
  *  \param colorBGR Color of rectangle in BGR
  */
+
+void drawOtherTriangle(u_char row, u_char col, u_int colorBGR);
+
 void fillRectangle(u_char colMin, u_char rowMin, u_char width, u_char height, u_int colorBGR);
 
 /** Clear screen (fill with color)
  *  
  *  \param colorBGR The color to fill screen
  */
+
+
+void drawSquareColor(u_char col, u_char row, u_int colorBGR);
+
 void clearScreen(u_int colorBGR);
 
 /** Draw string at col,row
@@ -47,6 +54,9 @@ void drawString5x7(u_char col, u_char row, char *string,
 /** 5x7 font - this function draws background pixels
  *  Adapted from RobG's EduKit
  */
+
+void drawSquare(u_char col, u_char row);
+
 void drawChar5x7(u_char col, u_char row, char c, 
 		 u_int fgColorBGR, u_int bgColorBGR);
 
@@ -60,6 +70,11 @@ void drawChar5x7(u_char col, u_char row, char c,
  */
 void drawRectOutline(u_char colMin, u_char rowMin, u_char width, u_char height,
 		     u_int colorBGR);
-#endif // included
 
+void drawline(u_char col);
+
+void drawTriangle(u_char row, u_char col, u_int colorBGR);
+
+void drawArrow(u_char row, u_char col, u_int colorBGR);
+#endif // included
 

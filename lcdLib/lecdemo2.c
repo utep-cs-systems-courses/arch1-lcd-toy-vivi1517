@@ -20,17 +20,19 @@ main()
 
   // fillRectangle(30,30, 60, 60, COLOR_ORANGE);
   u_char offset_r = 50, offset_c = 50;
-  for (int r = 0; r <= 50; r++){
-    for (int c = 0; c <= r; c++){
-      drawPixel(offset_c + c, offset_r + r, COLOR_ORANGE);
-    }
-  }
+  // for (int r = 0; r <= 50; r++){
+  // for (int c = 0; c <= r; c++){
+      // drawPixel(offset_c + c, offset_r + r, COLOR_ORANGE);
+      // }
+    // }
 
-  // for (int r = 0; r >= 10; r++){
-  // for (int c = 0; c <= 10; c++){
+  drawSquare(20, 20);
+
+  // for (int r = 0; r <= 10; r++){
+  // for (int c = 0; c <= 10-r; c++){
       
-  //  drawPixel(offset_c + c, offset_r + r, COLOR_ORANGE);
-  //  drawPixel(offset_c - c, offset_r + r, COLOR_ORANGE);
+  // drawPixel(offset_c + c, offset_r + r, COLOR_ORANGE);
+  // drawPixel(offset_c - c, offset_r + r, COLOR_ORANGE);
 
   // }
   // }

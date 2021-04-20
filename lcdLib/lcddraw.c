@@ -115,3 +115,48 @@ void drawRectOutline(u_char colMin, u_char rowMin, u_char width, u_char height,
   fillRectangle(colMin + width, rowMin, 1, height, colorBGR);
 }
 
+void drawSquare(u_char col, u_char row){
+  for (int r = 0; r <= 50; r++){
+    for (int c = 0; c <= 50; c++){
+      drawPixel(col + c, row + r, COLOR_ORANGE);
+    }
+  }
+}
+
+void drawSquareColor(u_char col, u_char row, u_int colorBGR){
+  for (int r = 0; r <= 50; r++){
+    for (int c = 0; c <= 50; c++){
+      drawPixel(col + c, row + r, colorBGR);
+    }
+  }
+}
+
+void drawline(u_char col){
+  for (int i = 0; i < 160; i++){
+    drawPixel(col, i, COLOR_BLUE);
+  }
+}
+
+void drawTriangle(u_char row, u_char col, u_int colorBGR){
+  for (int r = 0; r <= 25; r++){
+    for (int c = 0; c <= r; c++){
+      drawPixel(c + col, r + row, colorBGR);
+    }
+  }
+}
+
+void drawOtherTriangle(u_char row, u_char col, u_int colorBGR){
+  for (int r = 0; r <=25; r++){
+    for (int c = 0; c <= 25-r; c++){
+      drawPixel(c + col, r + row, colorBGR);
+    }
+  }
+}
+
+void drawArrow(u_char row, u_char col, u_int colorBGR){
+  // drawSquare(20, 20);
+  //  fillRectangle(20, 70, 40, 10, COLOR_ORANGE);
+  drawTriangle(row, col, colorBGR);
+  drawOtherTriangle(row + 25, col, colorBGR);
+  fillRectangle(col - 40, row + 15, 40, 20, colorBGR);
+}
