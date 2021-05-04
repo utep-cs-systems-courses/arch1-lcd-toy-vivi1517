@@ -2,6 +2,11 @@
 #include <libTimer.h>
 #include "lcdutils.h"
 #include "lcddraw.h"
+#include "buzzer.h"
+#include "p2switches.h"
+#include "stateMachines.h"
+#include "led.h"
+
 
 #define LED_GREEN BIT6             // P1.6
 
@@ -23,9 +28,9 @@ void wdt_c_handler()
   if (secCount == 250) {		/* once/sec */
     secCount = 0;
     // fontFgColor = (fontFgColor == COLOR_GREEN) ? COLOR_BLACK : COLOR_GREEN;
-    redrawScreen = 1;
+    //  redrawScreen = 1;
   }
-  if (dsecCount == 25) {
+  if (dsecCount == 50) {
     dsecCount = 0;
     nextShapeCol += shapeVelocity;
     if (nextShapeCol >= 100 || nextShapeCol <= 60) {
@@ -43,7 +48,9 @@ void main()
    P1OUT |= LED_GREEN;
    configureClocks();
    lcd_init();
-  
+   buzzer_init();
+   p2sw_init();
+   
    enableWDTInterrupts();      /**< enable periodic interrupt */
    or_sr(0x8);	              /**< GIE (enable interrupts) */
 
@@ -54,20 +61,30 @@ void main()
      if (redrawScreen) {
       
        redrawScreen = 0;
-       // drawArrow(20, 20, COLOR_ORANGE);
-      
-       // drawSquareColor(nextShapeCol, 20, COLOR_BLUE);
-       // drawline(shapeCol);
-       
-       // drawline(shapeCol);
-      
-       drawArrow(60, shapeCol, COLOR_ORANGE);
+  
+
        drawArrow(60, shapeCol, COLOR_BLUE);
+       drawArrow(60, nextShapeCol, COLOR_ORANGE); 
        // drawString5x7(shapeCol, 20, "hello", COLOR_BLUE, COLOR_BLUE);
        // drawString5x7(nextShapeCol, 20, "hello", fontFgColor, COLOR_BLUE);
        // drawSquareColor(nextShapeCol, 20, COLOR_ORANGE);
      
        shapeCol = nextShapeCol;
+
+       switch(button_state){
+       case 1:
+	 buzzer_set_period(2000);
+	 break;
+       case 2:
+	 buzzer_set_period(3000);
+	 break;
+       case 3:
+	 reset();
+	 break;
+       case 4:
+	 buzzer_set_period(2000);
+	 break;
+       }
      }
      P1OUT &= ~LED_GREEN;	/* green off, lets user know that we are not running anything */
      or_sr(0x10);		/**< CPU OFF */
