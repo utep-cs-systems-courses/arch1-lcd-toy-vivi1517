@@ -49,7 +49,7 @@ void main()
    configureClocks();
    lcd_init();
    buzzer_init();
-   p2sw_init();
+   p2sw_init(15);
    
    enableWDTInterrupts();      /**< enable periodic interrupt */
    or_sr(0x8);	              /**< GIE (enable interrupts) */
